@@ -1,9 +1,17 @@
 package de.hfu.onlineshopv_12;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
+import org.xmlpull.v1.XmlSerializer;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.Intent;
+import android.util.Log;
+import android.util.Xml;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -18,7 +26,7 @@ public class UserInformationViewActivitiy extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_information_view);
-        this.addListenerOnButten();
+        //this.addListenerOnButten();
 
     }
 
@@ -76,10 +84,77 @@ public class UserInformationViewActivitiy extends Activity {
 					textField = (EditText)findViewById(R.id.addressField);
 					address = textField.getText().toString();
 					
-					File f = new File("c:/"+name+".xml");
+					
+					/*
+					File newxmlfile = new File("/storage/sdcard0/external_sd/" + name +".xml");
+					try {
+					    newxmlfile.createNewFile();
+					} catch (IOException e) {
+					     Log.e("IOException", "Exception in create new File(");
+					}
+					
+					FileOutputStream fos = null;
+					try{
+						fos = new FileOutputStream(newxmlfile);
+
+					} catch(FileNotFoundException e) {
+					Log.e("FileNotFoundException",e.toString());
+					}
+					
+					//getApplicationContext().openFileOutput(newxmlfile);
+					
+					XmlSerializer xmls = Xml.newSerializer();
+					//StringWriter sw = new StringWriter();
+					
+					try {
+						xmls.setOutput(fos,"UTF-8");
+						xmls.startDocument("UTF-8", true);
+						xmls.setFeature("http://xmlpull.org/v1/doc/features.html#indent-output", true);
+						  
+						// Open tag
+						xmls.startTag(null, "user-data");
+						// Values
+						xmls.startTag("", "name");
+						xmls.text(name);
+						xmls.endTag("", "name");
+						xmls.startTag("", "password");
+						xmls.text(password);
+						xmls.endTag("", "password");
+						xmls.startTag("", "phonenumber");
+						xmls.text(phonenumber);
+						xmls.endTag("", "phonenumber");
+						xmls.startTag("", "email");
+						xmls.text(email);
+						xmls.endTag("", "email");
+						xmls.startTag("", "address");
+						xmls.text(address);
+						xmls.endTag("", "address");
+						// End tag
+						xmls.endTag(null, "user-data");
+						xmls.endDocument();
+						xmls.flush();
+						fos.close();
+						
+						
+					} catch (IllegalArgumentException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} catch (IllegalStateException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					
+					// Start xml document
+					;
+					//if submit button is clicked
+					 * 
+					 */
 					
 					break;
-					//if submit button is clicked
+					
 					
 					
 				case R.id.resetButton:
